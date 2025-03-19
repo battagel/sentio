@@ -3,17 +3,16 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-vanko = "sentio.__main__:main"
+sentio = "sentio.__main__:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 packages = ["sentio"]
 
 [project]
-name = "vanko"
+name = "sentio"
 version = "0.1.0"
 description = "Anomaly detection with ML"
-readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pandas",

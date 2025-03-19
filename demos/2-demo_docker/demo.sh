@@ -6,7 +6,7 @@
 
 container=sql1
 user=sa
-password=S0methingS@Str0ng!
+password=password
 script=CPU_Sadness.sql
 
 # Copy over the program

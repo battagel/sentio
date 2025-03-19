@@ -7,8 +7,10 @@ services:
     container_name: telegraf
     depends_on:
       - prometheus
+    user: docker
     volumes:
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: on-failure
     ports:
       - 9273:9273
@@ -55,41 +57,41 @@ services:
       - CHANGEPOINT_PRIOR_SCALE=1
       - METRIC_CONTAINER_FIELD=sql_instance
       - METRIC_NAME=cpu
-      - METRIC_TYPE=sqlserver_cpu_sqlserver_process_cpu
+      - METRIC_TYPE=docker_container_cpu_usage_percent
       depends_on:
         - prometheus
       ports:
         - 8000:8000
       restart: on-failure
-  sql1:
+  node0:
     platform: linux/amd64
     image: mcr.microsoft.com/mssql/server:2022-latest
-    hostname: sql1
-    container_name: sql1
+    hostname: node0
+    container_name: node0
     ports:
       - 1433:1433
     volumes:
-      - sql1-data:/var/opt/mssql
+      - node0-data:/var/opt/mssql
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=S0methingS@Str0ng!
-  sql2:
+  node1:
     platform: linux/amd64
     image: mcr.microsoft.com/mssql/server:2022-latest
-    hostname: sql2
-    container_name: sql2
+    hostname: node1
+    container_name: node1
     ports:
       - 1434:1433
     volumes:
-      - sql2-data:/var/opt/mssql
+      - node1-data:/var/opt/mssql
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=S0methingS@Str0ng!
 volumes:
-  sql1-data:
-    name: sql1-data
-  sql2-data:
-    name: sql2-data
+  node0-data:
+    name: node0-data
+  node1-data:
+    name: node1-data
   prometheus-data:
     name: prometheus-data
   grafana-data:

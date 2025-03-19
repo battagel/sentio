@@ -1,7 +1,8 @@
 FROM python:3.11
 
 WORKDIR /init
-COPY . /init
+COPY pyproject.toml /init
+COPY src /init/src
 RUN pip install --no-cache-dir .
 EXPOSE 8000
 CMD ["python3", "-m", "sentio"]
