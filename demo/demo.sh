@@ -5,6 +5,8 @@
 # displayed on the graph.
 
 container=sql1
+user=sa
+password=password
 script=CPU_Sadness.sql
 
 # Copy over the program
@@ -12,7 +14,7 @@ docker cp ./$script $container:/opt/mssql-tools18/bin/$script
 docker update $container --cpus 5.00
 
 # Start the CPU heavy process
-docker exec -d $container bash -c "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'password' -i /opt/mssql-tools18/bin/$script -No"
+docker exec -d $container bash -c "/opt/mssql-tools18/bin/sqlcmd -S localhost -U $user -P '$password' -i /opt/mssql-tools18/bin/$script -No"
 
 # Open Grafana
 open http://localhost:3000/d/3MpPHQhVZ
