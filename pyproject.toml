@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+vanko = "sentio.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["sentio"]
+
+[project]
+name = "vanko"
+version = "0.1.0"
+description = "Anomaly detection with ML"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "prophet",
+    "requests",
+    "prometheus_client",
+    "plotly",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.3.0",
+    "pylint>=2.15.0",
+    "pyright==1.1.394",
+    "mypy==1.15.0",
+]
+
+[tool.black]
+line-length=100
+exclude = "venv"
+
+[tool.pylint.main]
+ignore = ["venv", ".git"]
+ignore-patterns = ["^\\.#"]
+jobs = 0
+persistent = true
+suggestion-mode = true
+unsafe-load-any-extension = false
+
+[tool.pylint.messages_control]
+disable = [
+        "missing-module-docstring",
+        "missing-class-docstring",
+        "missing-function-docstring",
+        "logging-fstring-interpolation",
+        "logging-format-interpolation",
+]
+
+[tool.pylint.format]
+max-line-length = 100
+ignore-long-lines = "^\\s*(# )?<?https?://\\S+>?$"
+
+[tool.pylint.reports]
+output-format = "colorized"
+reports = false
+score = true

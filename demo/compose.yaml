@@ -1,0 +1,93 @@
+version: '3.3'
+
+services:
+  telegraf:
+    image: telegraf
+    hostname: telegraf
+    container_name: telegraf
+    depends_on:
+      - prometheus
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    restart: on-failure
+    ports:
+      - 9273:9273
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    container_name: prometheus
+    command:
+      - '--storage.tsdb.retention.time=60d'
+      - '--storage.tsdb.path=/prometheus'
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+    volumes:
+      - prometheus-data:/prometheus
+      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+    ports:
+      - 9090:9090
+    restart: on-failure
+  grafana:
+    image: grafana/grafana
+    hostname: grafana
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=username
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+    restart: on-failure
+  sentio:
+      build:
+        context: ../
+        dockerfile: Dockerfile.sentio
+      hostname: sentio
+      container_name: sentio
+      environment:
+      - PROMETHEUS=http://prometheus:9090/api/v1/query
+      - DAYSBACK=1d
+      - PREDICTION_FREQUENCY=15
+      - CHANGEPOINT_PRIOR_SCALE=1
+      depends_on:
+        - prometheus
+      ports:
+        - 8000:8000
+      restart: on-failure
+  sql1:
+    platform: linux/amd64
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    hostname: sql1
+    container_name: sql1
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=password
+  sql2:
+    platform: linux/amd64
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    hostname: sql2
+    container_name: sql2
+    ports:
+      - 1434:1433
+    volumes:
+      - sql2-data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=password
+volumes:
+  sql1-data:
+    name: sql1-data
+  sql2-data:
+    name: sql2-data
+  prometheus-data:
+    name: prometheus-data
+  grafana-data:
+    name: grafana-data
