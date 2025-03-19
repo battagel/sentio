@@ -71,9 +71,9 @@ algorithm to determine when to raise an alarm for the anomaly.
 
 ### Screenshots
 
-<!-- <div align="center">  -->
-<!--   <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" /> -->
-<!-- </div> -->
+<div align="center">
+  <img src="images/sentio-grafana-dashboard.jpeg" alt="screenshot" width="400"/>
+</div>
 
 <!-- TechStack -->
 
