@@ -71,6 +71,16 @@ class PredictionService:
             raise ValueError("METRIC_NAME envvar not provided")
         self.query_templates = {self.metric_name: self.metric_type + "[{days_back}]"}
 
+        print("Initialised Prediction Service")
+        print(f"Prometheus URL: {self.prometheus_url}")
+        print(f"Days Back: {self.days_back}")
+        print(f"Prediction Periods: {self.prediction_periods}")
+        print(f"Prediction Frequency: {self.prediction_frequency}")
+        print(f"Changepoint Prior Scale: {self.changepoint_prior_scale}")
+        print(f"Metric Label: {self.metric_label}")
+        print(f"Metric Name: {self.metric_name}")
+        print(f"Metric Type: {self.metric_type}")
+
     def get_prometheus_data(self, metric_type="cpu"):
         """
         Fetch data from Prometheus API
