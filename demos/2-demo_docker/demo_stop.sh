@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker compsoe down
+docker compose down
 docker volume rm grafana-data
 docker volume rm prometheus-data
 docker volume rm node0-data

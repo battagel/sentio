@@ -53,7 +53,7 @@ services:
       - DAYSBACK=1d
       - PREDICTION_PERIODS=30
       - CHANGEPOINT_PRIOR_SCALE=1
-      - METRIC_CONTAINER_FIELD=sql_instance
+      - METRIC_LABEL=sql_instance
       - METRIC_NAME=cpu
       - METRIC_TYPE=sqlserver_cpu_sqlserver_process_cpu
       depends_on:
