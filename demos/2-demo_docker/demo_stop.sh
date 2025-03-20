@@ -1,4 +1,4 @@
-#!/bin./bash
+#!/bin/bash
 
 docker compsoe down
 docker rm grafana-data
