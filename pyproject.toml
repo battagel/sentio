@@ -19,7 +19,6 @@ dependencies = [
     "prophet",
     "requests",
     "prometheus_client",
-    "plotly",
 ]
 
 [project.optional-dependencies]

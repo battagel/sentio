@@ -71,7 +71,6 @@
             }
           },
           "mappings": [],
-          "max": 100,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -434,14 +433,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "query_result(sqlserver_server_properties_cpu_count{container_name=~\".+\"})",
+        "definition": "query_result(docker_container_cpu_usage_percent_yhat{container_name=~\".+\"})",
         "includeAll": true,
-        "label": "SQL Instance",
+        "label": "Container Name",
         "multi": true,
         "name": "container_name",
         "options": [],
         "query": {
-          "query": "query_result(sqlserver_server_properties_cpu_count{container_name=~\".+\"})",
+          "query": "query_result(docker_container_cpu_usage_percent_yhat{container_name=~\".+\"})",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

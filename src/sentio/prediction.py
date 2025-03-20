@@ -60,7 +60,7 @@ class PredictionService:
             os.getenv("CHANGEPOINT_PRIOR_SCALE", self.DEFAULT_CHANGEPOINT_PRIOR_SCALE)
         )
         self.gauge_metrics = {}
-        self.metric_container_field = os.getenv("METRIC_CONTAINER_FIELD")
+        self.metric_label = os.getenv("METRIC_LABEL")
         self.metric_name = os.getenv("METRIC_NAME")
         if not self.metric_name:
             raise ValueError("METRIC_NAME envvar not provided")
@@ -85,7 +85,7 @@ class PredictionService:
         # Process the response data
         dataframes = []
         for result in response_json["data"]["result"]:
-            container_name = result["metric"].get(self.metric_container_field)
+            container_name = result["metric"].get(self.metric_label)
             metric_name = result["metric"].get("__name__")
             dataframe = pandas.DataFrame(result["values"], columns=["ds", "y"])
             dataframes.append(
