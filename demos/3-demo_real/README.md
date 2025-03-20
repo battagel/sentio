@@ -1,11 +1,14 @@
-# Demo 1
+# Demo 3
 
-This demo is much like demo 1 however it will be extracting metrics from the
-docker container rather than the SQL Database running side the container.
+This demo is much like demo 3 but using a real world data coming from an SDS
+storage device. Unfortunately this means I need to hide the compose.yaml file as
+it contains sensitive deployment information (see .gitignore).
 
 ## Launching the Demo
 
 ``` sh
+docker compose up -d
+
 ./demo.sh
 ```
 
@@ -28,5 +31,11 @@ To bring down the port forwarding, use:
 ## Bringing Down the Demo
 
 ``` sh
-./demo_stop.sh
+docker compose down
+```
+
+Optionally, you can delete all backing data from the demo
+
+``` sh
+docker volume prune
 ```

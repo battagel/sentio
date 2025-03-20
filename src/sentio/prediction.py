@@ -61,6 +61,8 @@ class PredictionService:
         )
         self.gauge_metrics = {}
         self.metric_label = os.getenv("METRIC_LABEL")
+        if not self.metric_label:
+            raise ValueError("METRIC_LABEL envvar not provided")
         self.metric_name = os.getenv("METRIC_NAME")
         if not self.metric_name:
             raise ValueError("METRIC_NAME envvar not provided")
