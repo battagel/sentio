@@ -1,15 +1,10 @@
 <div align="center">
-    <!-- TODO -->
-    <!-- <img src="assets/logo.png" alt="logo" width="200" height="auto" /> -->
     <h1>Sentio - Anomaly detection</h1>
     <p>
         Anomaly detection for docker compose workloads using Prometheus, Grafana and Prophet.
     </p>
     <!-- Badges -->
     <p>
-        <!-- <a href="https://github.com/battagel/sentio/graphs/contributors"> -->
-        <!--   <img src="https://img.shields.io/github/contributors/battagel/sentio" alt="contributors" /> -->
-        <!-- </a> -->
         <a href="https://github.com/battagel/sentio/network/members">
             <img src="https://img.shields.io/github/forks/battagel/sentio" alt="forks" />
         </a>
@@ -19,16 +14,8 @@
         <a href="https://github.com/battagel/sentio/issues/">
             <img src="https://img.shields.io/github/issues/battagel/sentio" alt="open issues" />
         </a>
-        <!-- TODO -->
-        <!-- <a href="https://github.com/battagel/sentio/blob/master/LICENSE"> -->
-        <!--   <img src="https://img.shields.io/github/license/battagel/sentio.svg" alt="license" /> -->
-        <!-- </a> -->
     </p>
     <h4>
-        <!--   <a href="https://github.com/battagel/sentio/">View Demo</a> -->
-        <!-- <span> · </span> -->
-        <!--   <a href="https://github.com/battagel/sentio">Documentation</a> -->
-        <!-- <span> · </span> -->
         <a href="https://github.com/battagel/sentio/issues/">Report Bug</a>
         <span> · </span>
         <a href="https://github.com/battagel/sentio/issues/">Request Feature</a>
@@ -48,8 +35,6 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Developing Locally](#developing-locally)
-  - [Running Tests](#running-tests)
   - [Linting](#linting)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -114,38 +99,7 @@ This project requires docker and docker compose.
 
 ### Installation
 
-Clone the repo.
-
-<!-- Developing Locally -->
-
-### Developing Locally
-
-Bring the scenario up
-``` sh
-docker compose up --detach
-```
-
-Start the IO
-``` sh
-./run_io.sh
-```
-
-See the current load and the predicted load on Grafana. Navigate to dashboards to see some preproduced graphs
-``` sh
-http://localhost:3000
-```
-
-
-Bring the scenario down
-``` sh
-docker compose down
-```
-
-<!-- Running Tests -->
-
-### Running Tests
-
-N/A
+Clone the repo. In the `demos/` directory there are three demos each with a `README.md` available.
 
 <!-- Linting -->
 
@@ -159,15 +113,13 @@ pylint .
 
 ## Usage
 
-Head to `http://localhost:3000` to view the Grafana
+Launch each demo with the instructions in the `README.md`.
 
 <!-- Contributing -->
 
 ## Contributing
 
 Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
 
 <!-- FAQ -->
 
