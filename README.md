@@ -38,8 +38,6 @@
   - [Linting](#linting)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [FAQ](#faq)
-- [License](#license)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -83,7 +81,9 @@ algorithm to determine when to raise an alarm for the anomaly.
 
 ### Features
 
-- Detect anomalous activity on running docker compose workflows
+- 3 granular demos to choose from
+- Works with all docker compose workflows
+- Telegraf plugin agnostic
 
 <!-- Getting Started -->
 
@@ -119,17 +119,7 @@ Launch each demo with the instructions in the `README.md`.
 
 ## Contributing
 
-Contributions are always welcome!
-
-<!-- FAQ -->
-
-## FAQ
-
-<!-- License -->
-
-## License
-
-MIT
+Contributions are always welcome! Feel free to raise a PR against this repo.
 
 <!-- Contact -->
 
