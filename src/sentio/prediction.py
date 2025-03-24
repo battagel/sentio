@@ -3,15 +3,11 @@ Using Prophet, create a prediction of what the next CPU usage will be given
 its history. Also calculate an error range
 """
 
-import requests
-import time
-import sys
 import os
-import re
+import requests
 import pandas
 from prophet import Prophet
-from prometheus_client import Gauge, make_wsgi_app
-from wsgiref.simple_server import make_server
+from prometheus_client import Gauge
 
 
 class Container:
