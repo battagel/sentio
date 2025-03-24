@@ -129,7 +129,7 @@ Contributions are always welcome!
 
 ## License
 
-TODO
+MIT
 
 <!-- Contact -->
 
